@@ -1,0 +1,1 @@
+﻿select AfasKnName, AfasKnContactDataId from AfasKnBasicContact
