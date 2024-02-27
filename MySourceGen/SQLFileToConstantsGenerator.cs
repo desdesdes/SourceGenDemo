@@ -20,6 +20,9 @@ namespace MySourceGen
         private void AddSource(SourceProductionContext spc, ImmutableArray<AdditionalText> sqlFiles)
         {
             var sb = new StringBuilder();
+            GeneratorsUtils.WriteGeneratedFileHeader(sb);
+
+            GeneratorsUtils.WriteGeneratedAttribute(sb);
             sb.AppendLine("internal static class SQL");
             sb.AppendLine("{");
             foreach (var file in sqlFiles)

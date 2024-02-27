@@ -18,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Analyzer Include="C:\ANTA\AfasDemo\MySourceGen\bin\Debug\netstandard2.0\MySourceGen.dll" />
-
+    <Analyzer Include="..\MySourceGen\bin\Debug\netstandard2.0\MySourceGen.dll" />
   </ItemGroup>
 </Project>

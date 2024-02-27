@@ -2,6 +2,7 @@
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Linq;
+using System.Text;
 using System.Threading;
 
 namespace MySourceGen
@@ -22,15 +23,19 @@ namespace MySourceGen
             var ns = GetNamespaceFrom(cds);
             var filePath = cds.GetLocation().GetLineSpan().Path;
 
-            var source = $@"
+            var sb = new StringBuilder();
+            GeneratorsUtils.WriteGeneratedFileHeader(sb);
+
+            sb.Append($@"
 namespace {ns};
+
 internal partial class {cds.Identifier}
 {{
 public static partial string GetFileName() => @""{filePath}"";
 }}
-";
+");
 
-            spc.AddSource(cds.Identifier.ToString() + ".generated.cs", source);
+            spc.AddSource(cds.Identifier.ToString() + ".generated.cs", sb.ToString());
 
             string GetNamespaceFrom(SyntaxNode s)
             {
